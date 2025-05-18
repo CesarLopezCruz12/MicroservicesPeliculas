@@ -1,0 +1,25 @@
+server:
+  port: 8085
+spring:
+  security:
+    user:
+      name: admin
+      password: adminpass
+  datasource:
+    url: jdbc:mysql://localhost:3306/Contenido
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+jwt:
+  secret: "0123456789ABCDEF0123456789ABCDEF"
+  expiration-ms: 28800000  # 8horas
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+
