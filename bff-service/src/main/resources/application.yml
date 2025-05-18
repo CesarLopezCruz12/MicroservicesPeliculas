@@ -1,0 +1,14 @@
+
+server:
+  port: 8084
+
+
+services:
+  personaje:
+    url: http://localhost:8081
+  multimedia:
+    url: http://localhost:8082
+  casting:
+    url: http://localhost:8083
+  image:
+    url: http://localhost:8086
