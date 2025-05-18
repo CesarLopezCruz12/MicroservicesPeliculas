@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          secret: "0123456789ABCDEF0123456789ABCDEF"
+      
+          
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      default-filters:
+        - StripPrefix=1
+      routes:
+        - id: personajes
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/personajes/**
+        - id: peliculas
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/peliculas/**
+        - id: reparto
+          uri: http://localhost:8083
+          predicates: 
+            - Path=/api/reparto/**
+        - id: bff
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/bff/**
+        - id: auth
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/auth/**
+        - id: image
+          uri: http://localhost:8086
+          predicates:
+           - Path=/api/images/**
+          
+jwt:
+  secret: "0123456789ABCDEF0123456789ABCDEF"
