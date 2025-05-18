@@ -3,6 +3,7 @@ package com.prueba.bbf.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,5 +37,16 @@ public class InfoBFFController {
 	@GetMapping("/personajes/peliculas")
 	public List<CharacterWithMoviesDTO> charactersWithMovies() {
 	  return svc.findAllCharactersWithMovies();
+	}
+	
+	
+	@GetMapping("/peliculas/reparto/{id}")
+	public MovieWithCastDTO moviesWithCastByID(@PathVariable("id") Integer multimediaID) {
+	  return svc.findByIdMoviesWithCast(multimediaID);
+	}
+
+	@GetMapping("/personajes/peliculas/{id}")
+	public CharacterWithMoviesDTO charactersWithMoviesByID(@PathVariable("id") Integer characterID) {
+	  return svc.findByIdCharactersWithMovies(characterID);
 	}
 }

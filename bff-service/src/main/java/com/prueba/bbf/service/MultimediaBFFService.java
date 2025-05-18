@@ -44,11 +44,9 @@ public class MultimediaBFFService {
     }
 
     public MovieDTO updateWithImage(UpdateMovieWithImageRequest req, MultipartFile file) {
-        // 1) Subir imagen
         ImageUploadResponse imgResp = imageClient.upload(file);
         String url = imgResp.url();
-
-        // 2) Reconstruir CreateMovieRequest con URL nueva
+        System.out.print(url);
         CreateMovieRequest wrapped = new CreateMovieRequest(
             req.tipoMultimediaID(),
             req.titulo(),

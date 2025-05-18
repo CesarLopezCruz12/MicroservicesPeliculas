@@ -30,4 +30,6 @@ public interface CharacterClient {
 	
 	@GetMapping("/personajes")
     List<CharacterDTO> findAll();
+	
+	
 }

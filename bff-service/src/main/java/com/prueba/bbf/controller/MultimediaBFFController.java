@@ -42,12 +42,9 @@ public class MultimediaBFFController {
 
     @PutMapping(path = "/with-image", consumes = "multipart/form-data")
     @ResponseStatus(HttpStatus.OK)
-    public MovieDTO updateWithImage(
-        @RequestParam("data") @Valid String jsonData,
-        @RequestParam("file") MultipartFile file
-    ) throws Exception {
-        UpdateMovieWithImageRequest req =
-            objectMapper.readValue(jsonData, UpdateMovieWithImageRequest.class);
+    public MovieDTO updateWithImage( @RequestParam("data") @Valid String jsonData, @RequestParam("file") MultipartFile file ) throws Exception {
+        UpdateMovieWithImageRequest req = objectMapper.readValue(jsonData, UpdateMovieWithImageRequest.class);
+        System.out.print(file);
         return service.updateWithImage(req, file);
     }
 
