@@ -3,11 +3,10 @@ package com.prueba.movie.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
-
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(name = "Multimedia")
+@Table(name = "multimedia")  // en minúsculas y snake_case
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,24 +15,23 @@ public class MovieModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MultimediaID")
+    @Column(name = "multimediaid")
     private Integer multimediaID;
 
-    @Column(name = "Titulo", nullable = false)
+    @Column(name = "titulo", nullable = false)
     private String titulo;
 
-    
-    @Column(name = "TipoMultimediaID", nullable = false)
+    @Column(name = "tipomultimediaid", nullable = false)  // ← aquí cambias
     private Integer tipoMultimediaID;
 
-    @Column(name = "Imagen", columnDefinition = "TEXT")
+    @Column(name = "imagen", columnDefinition = "TEXT")
     private String imagen;
 
     @Lob
-    @Column(name = "Descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
 
     @CreationTimestamp
-    @Column(name = "FechaCreacion", nullable = false, updatable = false)
+    @Column(name = "fechacreacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 }

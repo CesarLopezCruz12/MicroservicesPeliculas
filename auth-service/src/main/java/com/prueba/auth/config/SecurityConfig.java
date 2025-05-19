@@ -23,7 +23,7 @@ public class SecurityConfig {
         return new ProviderManager(provider);
     }
 
-    @Bean
+	@Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }

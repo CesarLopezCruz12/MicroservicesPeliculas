@@ -1,12 +1,19 @@
 package com.prueba.auth.config;
 
 
+import java.util.Set;
+
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import com.prueba.auth.model.UserEntity;
+import com.prueba.auth.repository.UserRepository;
 
 @Configuration
 public class AuthSecurityConfig {
@@ -36,5 +43,22 @@ public class AuthSecurityConfig {
       .formLogin().disable();
 
     return http.build();
+  }
+  
+  @Bean
+  public CommandLineRunner seedAdmin(UserRepository userRepo,
+                                     PasswordEncoder passwordEncoder) {
+      return args -> {
+          String adminUsername = "admin";
+          if (userRepo.findByUsername(adminUsername).isEmpty()) {
+              UserEntity admin = UserEntity.builder()
+                  .username(adminUsername)
+                  .password( passwordEncoder.encode("adminpass") )
+                  .roles(Set.of("ROLE_ADMIN"))
+                  .build();
+              userRepo.save(admin);
+              System.out.println("👷‍♂️ Admin creado con contraseña 'adminpass'");
+          }
+      };
   }
 }

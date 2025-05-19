@@ -6,31 +6,37 @@ import java.util.Set;
 import lombok.*;
 
 @Entity
-@Table(name = "Usuarios")
+@Table(name = "usuarios")  // en minúsculas y snake_case
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class UserEntity {
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "usuarioid")         // coincidiendo con el DDL
     private Long usuarioID;
 
-    @Column(name = "NombreUsuario", unique = true, nullable = false)
+    @Column(name = "nombreusuario",      // snake_case
+            unique = true,
+            nullable = false)
     private String username;
 
-    @Column(name = "Contrasena", nullable = false)
+    @Column(name = "contrasena",          // snake_case
+            nullable = false)
     private String password;
 
-    @Column(name = "FechaCreacion", nullable = false, updatable = false)
+    @Column(name = "fechacreacion",      // snake_case
+            nullable = false,
+            updatable = false)
     @Builder.Default
     private LocalDateTime fechaCreacion = LocalDateTime.now();
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
-      name = "UsuarioRoles",
-      joinColumns = @JoinColumn(name = "UsuarioID")
+      name = "usuarioroles",              // tabla en minúsculas
+      joinColumns = @JoinColumn(name = "usuarioid")
     )
-    @Column(name = "Rol")
+    @Column(name = "rol")                  // columna en minúsculas
     private Set<String> roles;
 }

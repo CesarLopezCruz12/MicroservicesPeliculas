@@ -14,29 +14,29 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "Personajes")
+@Table(name = "personajes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class CharacterModel {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PersonajeID")
+    @Column(name = "personajeid")     // columna correcta
     private Integer personajeID;
 
-    @Column(name = "Nombre", nullable = false)
+    @Column(name = "nombre")           // si usas snake_case en BD
     private String nombre;
-    
-    @Column(name = "Imagen", columnDefinition = "TEXT")
+
+    @Column(name = "imagen", columnDefinition = "TEXT")
     private String imagen;
-    
+
     @Lob
-    @Column(name = "Descripcion")
+    @Column(name = "descripcion")
     private String descripcion;
 
     @CreationTimestamp
-    @Column(name = "FechaCreacion", nullable = false, updatable = false)
+    @Column(name = "fechacreacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 }
