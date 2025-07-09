@@ -5,9 +5,9 @@ cloudflare:
   r2:
     endpoint: https://beee52aca83c40b49b5c3f40e96b080c.eu.r2.cloudflarestorage.com
     bucket: productsimagenstorage
-    access-key: 8365042b3eec2f827b4ac6b897a85280
-    secret-key: f3fe9d935d4f89b175891b22a0eb66d078afff77d1ba905303b71a0ddce35e21
+    access-key: 8363432433e45042b3ec6b897a85280
+    secret-key: f3fe9d935d4f89berfewrt4ert43t35afff77d1ba905303b71a0ddce35e21
     region: "auto"
-    public-base-url: https://pub-d87eac019a4e4a349e693c0ba28e7912.r2.dev
+    public-base-url: https://pub-d87eac01978fgh7g93c0ba28e7912.r2.dev
       
       
